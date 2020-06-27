@@ -3,6 +3,7 @@ package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain;
 import java.io.Serializable;
 
 public class City implements Serializable {
+    private static final long serialVersionUID = 7526472295622776147L;
 
     private int id;
     private String name;
