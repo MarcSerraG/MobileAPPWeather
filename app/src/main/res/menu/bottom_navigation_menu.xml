@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mi_city_hour"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:title="@string/city_hour"/>
+    <item
+        android:id="@+id/mi_city_week"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/city_week"/>
+</menu>

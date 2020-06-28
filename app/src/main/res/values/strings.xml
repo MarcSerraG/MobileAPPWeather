@@ -3,5 +3,6 @@
     <string name="menu_search">Search</string>
     <string name="item_flag">flag</string>
     <string name="tv_city_name">City</string>
-    <string name="error_weather_factory">Something went wrong when requesting the city\'s weather!</string>
+    <string name="city_hour">Hour</string>
+    <string name="city_week">Week</string>
 </resources>

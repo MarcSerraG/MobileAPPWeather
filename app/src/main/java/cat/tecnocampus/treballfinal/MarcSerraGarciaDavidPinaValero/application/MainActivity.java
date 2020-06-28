@@ -3,6 +3,7 @@ package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.application;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,9 +20,10 @@ import java.util.List;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.CityListAdapter;
+import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.ClickInterface;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ClickInterface {
 
     List<City> citiesList = new ArrayList<>();
     RecyclerView city_view;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         city_view.setLayoutManager(layoutManager);
-        cityListAdapter = new CityListAdapter(citiesList);
+        cityListAdapter = new CityListAdapter(citiesList,this);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this,R.drawable.city_divider));
         city_view.addItemDecoration(dividerItemDecoration);
@@ -77,5 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 "","ES","2.12804","41.399422"));
         citiesList.add(new City( 6359304,"Madrid",
                 "","ES","-3.68275","40.489349"));
+    }
+
+    @Override
+    public void recyclerviewOnClick(int position) {
+        Intent intent = new Intent(MainActivity.this, CityWeatherActivity.class);
+        startActivity(intent);
     }
 }
