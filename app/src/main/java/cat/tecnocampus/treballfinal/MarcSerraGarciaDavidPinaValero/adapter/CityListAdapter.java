@@ -19,11 +19,11 @@ import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
 
 public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHolder> implements Filterable {
 
-    List<City> citiesList;
-    List<City> citiesListAll;
+    ArrayList<City> citiesList;
+    ArrayList<City> citiesListAll;
     ClickInterface clickInterface;
 
-    public CityListAdapter(List<City> citiesList, ClickInterface listener){
+    public CityListAdapter(ArrayList<City> citiesList, ClickInterface listener){
         this.citiesList = citiesList;
         this.citiesListAll = new ArrayList<>(citiesList);
         this.clickInterface = listener;

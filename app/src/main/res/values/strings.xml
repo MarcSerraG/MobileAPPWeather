@@ -5,4 +5,5 @@
     <string name="tv_city_name">City</string>
     <string name="city_hour">Hour</string>
     <string name="city_week">Week</string>
+    <string name="error_weather_factory">Something went wrong when requesting the city\'s weather!</string>
 </resources>

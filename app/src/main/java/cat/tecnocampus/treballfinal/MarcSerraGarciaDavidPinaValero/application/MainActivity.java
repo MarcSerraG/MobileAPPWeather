@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,10 +23,11 @@ import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.CityListAdapter;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.ClickInterface;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
+import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.factory.CityFactory;
 
 public class MainActivity extends AppCompatActivity implements ClickInterface {
 
-    List<City> citiesList = new ArrayList<>();
+    ArrayList<City> citiesList = new ArrayList<>();
     RecyclerView city_view;
     CityListAdapter cityListAdapter;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        dummycities();
+        loadCities();
 
         city_view = findViewById(R.id.rv_city_list);
 
@@ -74,11 +76,9 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
     }
 
 
-    private void dummycities(){
-        citiesList.add(new City(6356055,"Barcelona",
-                "","ES","2.12804","41.399422"));
-        citiesList.add(new City( 6359304,"Madrid",
-                "","ES","-3.68275","40.489349"));
+    private void loadCities(){
+        citiesList = CityFactory.parseAllCities();
+        Log.d("MsG", String.valueOf(citiesList));
     }
 
     @Override

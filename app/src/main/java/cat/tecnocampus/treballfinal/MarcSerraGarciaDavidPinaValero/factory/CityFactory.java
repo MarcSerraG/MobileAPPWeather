@@ -23,9 +23,7 @@ public class CityFactory {
 
             Type cityListType = new TypeToken<ArrayList<City>>(){}.getType();
 
-            ArrayList<City> cityList = gson.fromJson(reader, cityListType);
-
-            return cityList;
+            return gson.fromJson(reader, cityListType);
         }
         catch (Exception ex) {
             Log.d("Files", "City list in assets not found");
