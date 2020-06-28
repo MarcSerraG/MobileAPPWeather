@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -77,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
 
 
     private void loadCities(){
-        citiesList = CityFactory.parseAllCities();
+        try {
+            citiesList = CityFactory.parseAllCities(getAssets().open("city.list.json"));
+        } catch (Exception ex) {}
         Log.d("MsG", String.valueOf(citiesList));
     }
 
