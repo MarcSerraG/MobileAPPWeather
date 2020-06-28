@@ -1,20 +1,15 @@
 package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,10 +21,12 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHo
 
     List<City> citiesList;
     List<City> citiesListAll;
+    ClickInterface clickInterface;
 
-    public CityListAdapter(List<City> citiesList){
+    public CityListAdapter(List<City> citiesList, ClickInterface listener){
         this.citiesList = citiesList;
         this.citiesListAll = new ArrayList<>(citiesList);
+        this.clickInterface = listener;
     }
 
     @NonNull
@@ -96,11 +93,12 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHo
 
             cityImage = itemView.findViewById(R.id.img_city_flag);
             tv_city_name = itemView.findViewById(R.id.tv_city_name);
+            itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            //TODO
+            clickInterface.recyclerviewOnClick(getAdapterPosition());
         }
     }
 }
