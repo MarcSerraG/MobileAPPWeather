@@ -1,5 +1,6 @@
 package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.application;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
@@ -11,9 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
+import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
+import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.CityWeather;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.fragment.CityWeatherHourFragment;
 
 public class CityWeatherActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private City city;
+    private CityWeather cityWeather;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,14 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CityWeatherHourFragment()).commit();
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("city") && intent.hasExtra("cityWeather")) {
+            this.city = (City) intent.getSerializableExtra("city");
+            this.cityWeather = (CityWeather) intent.getSerializableExtra("cityWeather");
+        }
+        else finish();
+
     }
 
     @Override
