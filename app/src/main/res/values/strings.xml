@@ -14,4 +14,5 @@
     <string name="latitude">latitude</string>
     <string name="humidity">Humidity:</string>
     <string name="weather_description">Weather Description</string>
+    <string name="time">13:00</string>
 </resources>
