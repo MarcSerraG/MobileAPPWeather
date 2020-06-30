@@ -14,11 +14,14 @@ import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.CityWeather;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.fragment.CityWeatherHourFragment;
+import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.fragment.CityWeatherWeekFragment;
 
 public class CityWeatherActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private City city;
     private CityWeather cityWeather;
+    private Fragment hourlyFragment;
+    private Fragment weeklyFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,16 +43,22 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
+
+        Bundle bundle = new Bundle();
 
         switch (item.getItemId()){
             case R.id.mi_city_hour:
-                fragment = new CityWeatherHourFragment();
-                break;
+                if (hourlyFragment == null) hourlyFragment = new CityWeatherHourFragment();
+                bundle.putSerializable("hourly", cityWeather.getHourly());
+                hourlyFragment.setArguments(bundle);
+                return loadFragment(hourlyFragment);
             case R.id.mi_city_week:
-                break;
+                if (weeklyFragment == null) weeklyFragment = new CityWeatherWeekFragment();
+                bundle.putSerializable("daily", cityWeather.getDaily());
+                weeklyFragment.setArguments(bundle);
+                return loadFragment(weeklyFragment);
         }
-        return loadFragment(fragment);
+        return loadFragment(hourlyFragment);
     }
 
     private boolean loadFragment(Fragment fragment){
