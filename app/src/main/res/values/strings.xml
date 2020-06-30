@@ -10,4 +10,7 @@
     <string name="error_exclamation">Error!</string>
     <string name="temperature_grade">20ºC</string>
     <string name="current_city_name">Current_City_Name</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="humidity">Humidity:</string>
 </resources>

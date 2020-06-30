@@ -26,6 +26,7 @@ public class CityWeatherHourFragment extends Fragment {
             this.hourlyReports = (ArrayList<WeatherReport>) bundle.getSerializable("hourly");
 
         View view = inflater.inflate(R.layout.city_weather_hour_fragment, container, false);
+
         return view;
     }
 }
