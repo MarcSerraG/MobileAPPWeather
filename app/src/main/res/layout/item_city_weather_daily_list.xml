@@ -7,107 +7,77 @@
 
     <ImageView
         android:id="@+id/im_daily_weather"
-        android:layout_width="102dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="82dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_daily_weather_description"
-        android:layout_width="137dp"
-        android:layout_height="63dp"
-        android:layout_marginEnd="140dp"
-        android:gravity="center"
-        android:text="@string/weather_description"
-        android:textSize="16sp"
+    <ImageView
+        android:id="@+id/im_daily_humidity"
+        android:layout_width="27dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_humidity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/im_daily_weather"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081" />
-
-    <!--TextView
-        android:id="@+id/tv_daily_weather"
-        android:layout_width="129dp"
-        android:layout_height="23dp"
-        android:gravity="center"
-        android:text="@string/current_city_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.614"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/im_current_weather"
-        app:layout_constraintVertical_bias="0.076" /-->
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.909" />
 
     <ImageView
         android:id="@+id/im_max_daily_temperature"
-        android:layout_width="38dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toTopOf="@+id/im_min_current_temperature"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_uparrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toEndOf="@+id/tv_current_temperature"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551"
-        android:src="@drawable/ic_uparrow" />
-
-    <ImageView
-        android:id="@+id/im_min_daily_temperature"
-        android:layout_width="38dp"
-        android:layout_height="42dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toEndOf="@+id/tv_current_temperature"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449"
-        android:src="@drawable/ic_downarrow"/>
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_max_daily_temperature"
-        android:layout_width="60dp"
-        android:layout_height="34dp"
+        android:layout_width="42dp"
+        android:layout_height="27dp"
         android:gravity="center"
         android:text="@string/temperature_grade"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/im_max_current_temperature"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.139" />
+
+    <ImageView
+        android:id="@+id/im_min_daily_temperature"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_downarrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857" />
 
     <TextView
         android:id="@+id/tv_min_daily_temperature"
-        android:layout_width="60dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="42dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="@string/temperature_grade"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/im_max_current_temperature"
-        app:layout_constraintTop_toBottomOf="@+id/tv_max_temperature"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_humidity"
-        android:layout_width="63dp"
-        android:layout_height="24dp"
-        android:text="@string/humidity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv_daily_humidity"
@@ -116,9 +86,36 @@
         android:text="@string/humidity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.729"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintVertical_bias="0.891" />
+
+    <TextView
+        android:id="@+id/tv_daily_weather_description"
+        android:layout_width="133dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="140dp"
+        android:gravity="center"
+        android:text="@string/weather_description"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/im_daily_weather"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tv_daily_date"
+        android:layout_width="133dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/date_daily"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/im_daily_weather"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

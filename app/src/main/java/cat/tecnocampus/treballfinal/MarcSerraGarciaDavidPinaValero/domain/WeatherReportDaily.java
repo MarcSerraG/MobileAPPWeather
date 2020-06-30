@@ -10,6 +10,9 @@ public class WeatherReportDaily implements Serializable {
     @SerializedName("temp")
     public Temperature temperature;
 
+    @SerializedName("dt")
+    private long timestamp;
+
     private class Temperature implements  Serializable {
         private double day;
         private double min;
@@ -28,6 +31,15 @@ public class WeatherReportDaily implements Serializable {
     }
 
     public WeatherReportDaily() {
+    }
+
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public double getTemperatureDay() {

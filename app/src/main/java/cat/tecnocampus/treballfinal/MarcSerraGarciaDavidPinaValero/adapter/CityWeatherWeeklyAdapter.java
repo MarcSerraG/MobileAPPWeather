@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReportDaily;
@@ -36,10 +38,15 @@ public class CityWeatherWeeklyAdapter extends RecyclerView.Adapter<CityWeatherWe
 
         WeatherReportDaily report = reportList.get(position);
 
-        holder.tv_daily_weather_description.setText(report.getDescription());
-        holder.tv_max_temperature.setText(Double.toString(report.getTemperatureMax()));
-        holder.tv_min_temperature.setText(Double.toString(report.getTemperatureMin()));
-        holder.tv_humidity.setText(report.getHumidity());
+        Date date = new Date(report.getTimestamp()*1000);
+        SimpleDateFormat formater = new SimpleDateFormat("EEEE MMM d");
+        String day = formater.format(date);
+
+        holder.tv_daily_weather_description.setText(report.getDescription().toUpperCase());
+        holder.tv_max_temperature.setText(""+(int)report.getTemperatureMax()+" ºC");
+        holder.tv_min_temperature.setText(""+(int)report.getTemperatureMin()+" ºC");
+        holder.tv_humidity.setText(""+report.getHumidity()+" %");
+        holder.tv_date.setText(""+day);
 
         Glide.with(holder.itemView.getContext())
                 .load(report.getIconURL())
@@ -58,6 +65,7 @@ public class CityWeatherWeeklyAdapter extends RecyclerView.Adapter<CityWeatherWe
         public TextView tv_max_temperature;
         public TextView tv_min_temperature;
         public TextView tv_humidity;
+        public TextView tv_date;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +75,7 @@ public class CityWeatherWeeklyAdapter extends RecyclerView.Adapter<CityWeatherWe
             tv_max_temperature = itemView.findViewById(R.id.tv_max_daily_temperature);
             tv_min_temperature = itemView.findViewById(R.id.tv_min_daily_temperature);
             tv_humidity = itemView.findViewById(R.id.tv_daily_humidity);
+            tv_date = itemView.findViewById(R.id.tv_daily_date);
 
         }
     }

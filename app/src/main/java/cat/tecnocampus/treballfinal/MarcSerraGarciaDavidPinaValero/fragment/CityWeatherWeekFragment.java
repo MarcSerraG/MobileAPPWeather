@@ -41,6 +41,7 @@ public class CityWeatherWeekFragment extends Fragment {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this.getContext(),DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this.getContext(),R.drawable.city_divider));
+        reportView.addItemDecoration(dividerItemDecoration);
         reportView.setAdapter(weeklyAdapter);
 
         return view;
