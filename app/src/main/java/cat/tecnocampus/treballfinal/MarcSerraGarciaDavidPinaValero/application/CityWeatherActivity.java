@@ -3,6 +3,7 @@ package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,7 +31,6 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(this);
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CityWeatherHourFragment()).commit();
 
         Intent intent = getIntent();
         if (intent.hasExtra("cityWeather")) {
@@ -38,6 +38,14 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
             this.city = cityWeather.getCity();
         }
         else finish();
+
+        Bundle bundle = new Bundle();
+        if (hourlyFragment == null) hourlyFragment = new CityWeatherHourFragment();
+        bundle.putSerializable("hourly", cityWeather.getHourly());
+        bundle.putSerializable("current",cityWeather.getCurrent());
+        bundle.putSerializable("city", city);
+        hourlyFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,hourlyFragment).commit();
 
     }
 
@@ -50,6 +58,8 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
             case R.id.mi_city_hour:
                 if (hourlyFragment == null) hourlyFragment = new CityWeatherHourFragment();
                 bundle.putSerializable("hourly", cityWeather.getHourly());
+                bundle.putSerializable("current",cityWeather.getCurrent());
+                bundle.putSerializable("city", city);
                 hourlyFragment.setArguments(bundle);
                 return loadFragment(hourlyFragment);
             case R.id.mi_city_week:
