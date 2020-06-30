@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.CityWeatherWeeklyAdapter;
-import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.application.CityWeatherActivity;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReportDaily;
 
 public class CityWeatherWeekFragment extends Fragment {

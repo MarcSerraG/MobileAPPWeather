@@ -39,18 +39,16 @@
 
             <TextView
                 android:id="@+id/tv_current_temperature"
-                android:layout_width="86dp"
-                android:layout_height="97dp"
-                android:layout_marginEnd="140dp"
+                android:layout_width="114dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="@string/temperature_grade"
                 android:textSize="36sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.964"
                 app:layout_constraintStart_toEndOf="@+id/im_current_weather"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.081" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_current_city"
@@ -64,59 +62,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/im_current_weather"
                 app:layout_constraintVertical_bias="0.076" />
-
-            <ImageView
-                android:id="@+id/im_max_current_temperature"
-                android:layout_width="38dp"
-                android:layout_height="42dp"
-                app:layout_constraintBottom_toTopOf="@+id/im_min_current_temperature"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.184"
-                app:layout_constraintStart_toEndOf="@+id/tv_current_temperature"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.551"
-                android:src="@drawable/ic_uparrow" />
-
-            <ImageView
-                android:id="@+id/im_min_current_temperature"
-                android:layout_width="38dp"
-                android:layout_height="42dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.184"
-                app:layout_constraintStart_toEndOf="@+id/tv_current_temperature"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.449"
-                android:src="@drawable/ic_downarrow"/>
-
-            <TextView
-                android:id="@+id/tv_max_temperature"
-                android:layout_width="60dp"
-                android:layout_height="34dp"
-                android:gravity="center"
-                android:text="@string/temperature_grade"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintStart_toEndOf="@+id/im_max_current_temperature"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.13" />
-
-            <TextView
-                android:id="@+id/tv_min_temperature"
-                android:layout_width="60dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="9dp"
-                android:gravity="center"
-                android:text="@string/temperature_grade"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintStart_toEndOf="@+id/im_max_current_temperature"
-                app:layout_constraintTop_toBottomOf="@+id/tv_max_temperature"
-                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_current_longitude"
@@ -165,6 +110,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.705" />
+
+            <TextView
+                android:id="@+id/tv_current_description"
+                android:layout_width="107dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="28dp"
+                android:gravity="center"
+                android:text="@string/weather_description"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.415"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

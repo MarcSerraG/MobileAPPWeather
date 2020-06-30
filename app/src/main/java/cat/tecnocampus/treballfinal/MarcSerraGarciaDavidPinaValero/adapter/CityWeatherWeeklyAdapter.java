@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
-import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReport;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReportDaily;
 
 public class CityWeatherWeeklyAdapter extends RecyclerView.Adapter<CityWeatherWeeklyAdapter.ViewHolder> {

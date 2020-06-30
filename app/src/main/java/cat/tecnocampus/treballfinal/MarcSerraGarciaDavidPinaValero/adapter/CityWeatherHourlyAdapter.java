@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReport;
@@ -21,7 +23,7 @@ public class CityWeatherHourlyAdapter extends RecyclerView.Adapter<CityWeatherHo
     ArrayList<WeatherReport> weatherHourly;
 
     public CityWeatherHourlyAdapter(ArrayList<WeatherReport> weatherHourly){
-        this.weatherHourly = weatherHourly;
+        this.weatherHourly = new ArrayList<WeatherReport>(weatherHourly.subList(0, 25));
     }
 
     @NonNull
@@ -35,8 +37,14 @@ public class CityWeatherHourlyAdapter extends RecyclerView.Adapter<CityWeatherHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         WeatherReport weatherReport = weatherHourly.get(position);
 
+        Date date = new Date(weatherReport.getTimestamp()*1000);
+        SimpleDateFormat formater = new SimpleDateFormat("HH:mm");
+        String hour = formater.format(date);
+
+
         holder.humidity.setText(""+weatherReport.getHumidity()+" %");
         holder.temperature.setText(""+(int)weatherReport.getTemperature()+" ºC");
+        holder.time.setText(hour);
 
         Glide.with(holder.itemView.getContext())
                 .load(weatherReport.getIconURL())

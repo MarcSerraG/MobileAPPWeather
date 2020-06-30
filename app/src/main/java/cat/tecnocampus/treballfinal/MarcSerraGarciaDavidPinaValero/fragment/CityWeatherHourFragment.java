@@ -1,7 +1,6 @@
 package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.bumptech.glide.Glide;
 
@@ -24,7 +21,6 @@ import java.util.ArrayList;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.adapter.CityWeatherHourlyAdapter;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.City;
-import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.CityWeather;
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.domain.WeatherReport;
 
 public class CityWeatherHourFragment extends Fragment {
@@ -33,7 +29,7 @@ public class CityWeatherHourFragment extends Fragment {
     private ArrayList<WeatherReport> weatherHourly;
     private City city;
 
-    private TextView maxTemperature, minTemperature, currentCityName, currentTemperature;
+    private TextView currentDescription, currentCityName, currentTemperature;
     private TextView longitud, latitud, humidity;
     private ImageView weatherImage;
     private RecyclerView viewHourly;
@@ -50,8 +46,7 @@ public class CityWeatherHourFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.city_weather_hour_fragment, container, false);
 
-        maxTemperature = view.findViewById(R.id.tv_max_temperature);
-        minTemperature = view.findViewById(R.id.tv_min_temperature);
+        currentDescription = view.findViewById(R.id.tv_current_description);
         currentCityName = view.findViewById(R.id.tv_current_city);
         currentTemperature = view.findViewById(R.id.tv_current_temperature);
         latitud = view.findViewById(R.id.tv_current_latitude);
@@ -60,8 +55,8 @@ public class CityWeatherHourFragment extends Fragment {
         viewHourly = view.findViewById(R.id.rv_city_weather_hourly);
 
         weatherImage = view.findViewById(R.id.im_current_weather);
-        //maxTemperature.setText("");
-        //minTemperature.setText("");
+
+        currentDescription.setText(weatherReport.getDescription().toUpperCase());
         currentCityName.setText(""+city.getName());
         currentTemperature.setText(""+(int)weatherReport.getTemperature()+" ºC");
         latitud.setText("Lat. "+String.format("%.2f", city.getLatitude()));
