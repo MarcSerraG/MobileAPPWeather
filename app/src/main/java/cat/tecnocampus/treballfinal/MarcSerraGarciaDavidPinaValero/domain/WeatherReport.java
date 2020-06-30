@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class WeatherReport implements Serializable {
     private static final long serialVersionUID = 1236472295622776141L;
 
+    @SerializedName("dt")
+    private long timestamp;
+
     @SerializedName("temp")
     private double temperature;
 
@@ -22,6 +25,14 @@ public class WeatherReport implements Serializable {
     }
 
     public WeatherReport() {
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public double getTemperature() {
