@@ -31,9 +31,9 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,new CityWeatherHourFragment()).commit();
 
         Intent intent = getIntent();
-        if (intent.hasExtra("city") && intent.hasExtra("cityWeather")) {
-            this.city = (City) intent.getSerializableExtra("city");
+        if (intent.hasExtra("cityWeather")) {
             this.cityWeather = (CityWeather) intent.getSerializableExtra("cityWeather");
+            this.city = cityWeather.getCity();
         }
         else finish();
 

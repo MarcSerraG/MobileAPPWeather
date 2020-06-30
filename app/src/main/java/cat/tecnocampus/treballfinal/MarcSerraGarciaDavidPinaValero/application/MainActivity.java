@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
 
                 Gson gson = new Gson();
                 CityWeather cityWeather = gson.fromJson(response, CityWeather.class);
-
                 Log.d("MsG", "cityWeather is null? " + (cityWeather == null));
+                cityWeather.setCity(city);
+
                 Intent intent = new Intent(MainActivity.this, CityWeatherActivity.class);
                 intent.putExtra("cityWeather", cityWeather);
-                intent.putExtra("city", city);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {
