@@ -8,4 +8,6 @@
     <string name="error_weather_factory">Something went wrong when requesting the city\'s weather!</string>
     <string name="url_request_error">There was an error retrieving the weather of the city.</string>
     <string name="error_exclamation">Error!</string>
+    <string name="temperature_grade">20ºC</string>
+    <string name="current_city_name">Current_City_Name</string>
 </resources>
