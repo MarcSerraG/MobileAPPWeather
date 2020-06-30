@@ -57,6 +57,6 @@ public class WeatherReport implements Serializable {
     }
 
     public String getIconURL() {
-        return "http://openweathermap.org/img/wn/" + weather.get(0).icon + "@2x.png";
+        return "https://openweathermap.org/img/wn/" + weather.get(0).icon + "@2x.png";
     }
 }

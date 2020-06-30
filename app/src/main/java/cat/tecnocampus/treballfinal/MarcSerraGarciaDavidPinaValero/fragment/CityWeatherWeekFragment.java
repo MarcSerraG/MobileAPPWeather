@@ -22,8 +22,9 @@ public class CityWeatherWeekFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        if (bundle != null)
+        if (bundle != null) {
             this.dailyReports = (ArrayList<WeatherReportDaily>) bundle.getSerializable("daily");
+        }
 
         View view = inflater.inflate(R.layout.city_weather_week_fragment, container, false);
         return view;
