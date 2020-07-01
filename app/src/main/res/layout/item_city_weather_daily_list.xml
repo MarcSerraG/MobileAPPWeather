@@ -9,25 +9,36 @@
         android:id="@+id/im_daily_weather"
         android:layout_width="82dp"
         android:layout_height="70dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/im_daily_humidity"
         android:layout_width="27dp"
-        android:layout_height="24dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_humidity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintStart_toEndOf="@+id/tv_daily_weather_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_max_daily_temperature" />
+
+    <TextView
+        android:id="@+id/tv_max_daily_temperature"
+        android:layout_width="42dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/temperature_grade"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_daily_date"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/im_max_daily_temperature"
@@ -35,86 +46,56 @@
         android:layout_height="28dp"
         android:layout_marginTop="4dp"
         android:src="@drawable/ic_uparrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_max_daily_temperature"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_max_daily_temperature"
-        android:layout_width="42dp"
-        android:layout_height="27dp"
-        android:gravity="center"
-        android:text="@string/temperature_grade"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.139" />
 
     <ImageView
         android:id="@+id/im_min_daily_temperature"
         android:layout_width="28dp"
         android:layout_height="28dp"
+        android:layout_marginTop="4dp"
         android:src="@drawable/ic_downarrow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintStart_toEndOf="@+id/tv_min_daily_temperature"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_min_daily_temperature"
         android:layout_width="42dp"
         android:layout_height="27dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/temperature_grade"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/im_max_daily_temperature"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_daily_humidity"
-        android:layout_width="62dp"
-        android:layout_height="24dp"
+        android:layout_width="46dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
         android:text="@string/humidity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
+        app:layout_constraintStart_toEndOf="@+id/im_daily_humidity"
+        app:layout_constraintTop_toBottomOf="@+id/im_max_daily_temperature" />
 
     <TextView
         android:id="@+id/tv_daily_weather_description"
-        android:layout_width="133dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="140dp"
+        android:layout_width="121dp"
+        android:layout_height="44dp"
         android:gravity="center"
         android:text="@string/weather_description"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/im_daily_weather"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_daily_date" />
 
     <TextView
         android:id="@+id/tv_daily_date"
-        android:layout_width="133dp"
-        android:layout_height="26dp"
+        android:layout_width="121dp"
+        android:layout_height="24dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/date_daily"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/im_daily_weather"
         app:layout_constraintTop_toTopOf="parent" />
 
