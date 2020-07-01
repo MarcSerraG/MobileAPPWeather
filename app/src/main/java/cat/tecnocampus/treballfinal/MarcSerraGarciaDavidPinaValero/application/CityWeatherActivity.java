@@ -37,44 +37,49 @@ public class CityWeatherActivity extends AppCompatActivity implements BottomNavi
         }
         else finish();
 
+        boolean isHourFragment = intent.getBooleanExtra("hourFragment", true);
+
+        if (isHourFragment)
+            loadHourlyFragment();
+        else
+            loadWeeklyFragment();
+
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Intent intent = getIntent();
+
+        switch (item.getItemId()){
+            case R.id.mi_city_hour:
+                loadHourlyFragment();
+                intent.putExtra("hourFragment", true);
+                return true;
+            case R.id.mi_city_week:
+                loadWeeklyFragment();
+                intent.putExtra("hourFragment", false);
+                return true;
+        }
+        return false;
+    }
+
+    private void loadWeeklyFragment() {
+        Bundle bundle = new Bundle();
+        if (weeklyFragment == null) weeklyFragment = new CityWeatherWeekFragment();
+        bundle.putSerializable("daily", cityWeather.getDaily());
+        weeklyFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, weeklyFragment).commit();
+    }
+
+    private void loadHourlyFragment() {
         Bundle bundle = new Bundle();
         if (hourlyFragment == null) hourlyFragment = new CityWeatherHourFragment();
         bundle.putSerializable("hourly", cityWeather.getHourly());
         bundle.putSerializable("current",cityWeather.getCurrent());
         bundle.putSerializable("city", city);
         hourlyFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,hourlyFragment).commit();
-
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        Bundle bundle = new Bundle();
-
-        switch (item.getItemId()){
-            case R.id.mi_city_hour:
-                if (hourlyFragment == null) hourlyFragment = new CityWeatherHourFragment();
-                bundle.putSerializable("hourly", cityWeather.getHourly());
-                bundle.putSerializable("current",cityWeather.getCurrent());
-                bundle.putSerializable("city", city);
-                hourlyFragment.setArguments(bundle);
-                return loadFragment(hourlyFragment);
-            case R.id.mi_city_week:
-                if (weeklyFragment == null) weeklyFragment = new CityWeatherWeekFragment();
-                bundle.putSerializable("daily", cityWeather.getDaily());
-                weeklyFragment.setArguments(bundle);
-                return loadFragment(weeklyFragment);
-        }
-        return loadFragment(hourlyFragment);
-    }
-
-    private boolean loadFragment(Fragment fragment){
-        if (fragment != null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
+        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, hourlyFragment).commit();
     }
 }

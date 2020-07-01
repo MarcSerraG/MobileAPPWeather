@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
 
                 Intent intent = new Intent(MainActivity.this, CityWeatherActivity.class);
                 intent.putExtra("cityWeather", cityWeather);
+                intent.putExtra("hourFragment", true);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {
