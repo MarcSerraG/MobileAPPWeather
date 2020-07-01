@@ -1,17 +1,23 @@
 package cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.application;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.RelativeLayout;
+
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -25,7 +31,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 
 import cat.tecnocampus.treballfinal.MarcSerraGarciaDavidPinaValero.R;
@@ -40,25 +45,25 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
     ArrayList<City> citiesList = new ArrayList<>();
     RecyclerView city_view;
     CityListAdapter cityListAdapter;
-
+    RelativeLayout mRelativeLayout;
+    ClickInterface listener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        loadCities();
 
         city_view = findViewById(R.id.rv_city_list);
-
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        listener = this;
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         city_view.setLayoutManager(layoutManager);
-        cityListAdapter = new CityListAdapter(citiesList,this);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this,R.drawable.city_divider));
+        mRelativeLayout = findViewById(R.id.loadingPanel);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.city_divider));
         city_view.addItemDecoration(dividerItemDecoration);
         city_view.setAdapter(cityListAdapter);
+        new PrepareData().execute();
     }
 
     @Override
@@ -85,12 +90,11 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         return super.onCreateOptionsMenu(menu);
     }
 
-
-    private void loadCities(){
+    private ArrayList<City> loadCities(){
         try {
             citiesList = CityFactory.parseAllCities(getAssets().open("city.list.json"));
         } catch (Exception ex) {}
-        Log.d("MsG", String.valueOf(citiesList));
+        return  citiesList;
     }
 
     @Override
@@ -139,4 +143,23 @@ public class MainActivity extends AppCompatActivity implements ClickInterface {
         queue.add(stringRequest);
 
     }
+
+    private class PrepareData extends AsyncTask<Void, Void, Void> {
+        private ArrayList<City> acityArray;
+        protected void onPreExecute(Void param) {
+        }
+
+        protected Void doInBackground(Void... param) {
+            acityArray = loadCities();
+            return null;
+        }
+
+        protected void onPostExecute(Void param) {
+            cityListAdapter = new CityListAdapter(acityArray, listener);
+            cityListAdapter.notifyDataSetChanged();
+            city_view.setAdapter(cityListAdapter);
+            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+        }
+    }
+
 }
