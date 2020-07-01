@@ -55,6 +55,8 @@
         android:layout_height="28dp"
         android:layout_marginTop="4dp"
         android:src="@drawable/ic_downarrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_min_daily_temperature"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,11 +75,11 @@
         android:id="@+id/tv_daily_humidity"
         android:layout_width="46dp"
         android:layout_height="26dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="50dp"
         android:text="@string/humidity"
         app:layout_constraintStart_toEndOf="@+id/im_daily_humidity"
-        app:layout_constraintTop_toBottomOf="@+id/im_max_daily_temperature" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_daily_weather_description"
